@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/waynetheisinger/apollo-prisma-practice/issues"
   },
-  "homepage": "https://github.com/waynetheisinger/apollo-prisma-practice#readme"
+  "homepage": "https://github.com/waynetheisinger/apollo-prisma-practice#readme",
+  "dependencies": {
+    "apollo-server": "^2.19.2",
+    "graphql": "^15.5.0"
+  }
 }
