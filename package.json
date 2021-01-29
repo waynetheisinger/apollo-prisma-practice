@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/waynetheisinger/apollo-prisma-practice#readme",
   "dependencies": {
+    "@prisma/client": "^2.15.0",
     "apollo-server": "^2.19.2",
     "graphql": "^15.5.0"
   },
