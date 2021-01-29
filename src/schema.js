@@ -16,7 +16,8 @@ const typeDefs = gql`
   type Mutation {
     createDraft(content: String, title: String!): Post!
     publish(id: ID!): Post
-  }
+  }`
+
 const posts = [
   {
     id: 1,
@@ -74,4 +75,4 @@ const resolvers = {
 module.exports = {
   resolvers,
   typeDefs,
-}
+};
