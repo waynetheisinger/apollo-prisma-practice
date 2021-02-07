@@ -16,3 +16,25 @@ model Post {
   content   String?
   published Boolean @default(false)
 }
+
+model User {
+  id Int     @default(autoincrement()) @id
+  name String
+  email String
+}
+
+model Item {
+  id Int     @default(autoincrement()) @id
+  title String
+  description String
+  image String?
+  largeImage String?
+  price Int
+  // createAt: DateTime!
+  // updatedAt: DateTime!
+  // user: User!
+}
+
+
+
+

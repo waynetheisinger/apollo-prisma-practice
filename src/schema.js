@@ -1,5 +1,6 @@
 const { gql } = require('apollo-server')
-const { prisma } = require('./db')
+const { Mutation } = require("./resolvers/Mutation");
+const { Query } = require("./resolvers/Query");
 
 const typeDefs = gql`
   type Post {
@@ -9,50 +10,31 @@ const typeDefs = gql`
     title: String!
   }
 
+  type Item {
+    id: ID!
+    title: String!
+    description: String!
+    image: String
+    largeImage: String
+    price: Int!
+  }
+
   type Query {
     feed: [Post!]!
     post(id: ID!): Post
+    items: [Item]!
   }
 
   type Mutation {
     createDraft(content: String, title: String!): Post!
     publish(id: ID!): Post
+    createItem(title: String, description: String, price: Int, image: String, largeImage: String): Item!
   }
 `
 
 const resolvers = {
-  Query: {
-    feed: (parent, args) => {
-      return prisma.post.findMany({
-        where: { published: true },
-      })
-    },
-    post: (parent, args) => {
-      return prisma.post.findOne({
-        where: { id: Number(args.id) },
-      })
-    },
-  },
-  Mutation: {
-    createDraft: (parent, args) => {
-      return prisma.post.create({
-        data: {
-          title: args.title,
-          content: args.content,
-        },
-      })
-    },
-    publish: (parent, args) => {
-      return prisma.post.update({
-        where: {
-          id: Number(args.id),
-        },
-        data: {
-          published: true,
-        },
-      })
-    },
-  },
+  Query,
+  Mutation,
 }
 
 module.exports = {

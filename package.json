@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./src/server.js"
+    "start": "docker-compose up -d && nodemon ./src/server.js",
+    "deploy": "npx prisma migrate dev --name init --preview-feature",
+    "up": "docker-compose up -d",
+    "stop": "docker-compose stop",
+    "empty-db": "docker-compose down -v && docker-compose up -d"
   },
   "repository": {
     "type": "git",
@@ -21,7 +25,8 @@
   "dependencies": {
     "@prisma/client": "^2.15.0",
     "apollo-server": "^2.19.2",
-    "graphql": "^15.5.0"
+    "graphql": "^15.5.0",
+    "nodemon": "^2.0.7"
   },
   "devDependencies": {
     "@prisma/cli": "^2.15.0"
