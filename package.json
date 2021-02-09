@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "docker-compose up -d && nodemon ./src/server.js",
+    "dev": "docker-compose up -d && nodemon ./src/server.js",
     "deploy": "npx prisma migrate dev --name init --preview-feature",
-    "up": "docker-compose up -d",
-    "stop": "docker-compose stop",
+    "dev-up": "docker-compose up -d",
+    "dev-stop": "docker-compose stop",
     "empty-db": "docker-compose down -v && docker-compose up -d"
   },
   "repository": {
