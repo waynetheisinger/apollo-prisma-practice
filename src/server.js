@@ -3,4 +3,13 @@ const { resolvers, typeDefs } = require('./schema')
 
 const port = process.env.PORT || 8080
 
-new ApolloServer({ resolvers, typeDefs }).listen({ port }, () => console.log(`Server ready at: http://localhost:${port}`),)
+const cors = {
+    origin: 'http://localhost:7777',
+    credentials: true
+}
+
+new ApolloServer({ 
+    resolvers, 
+    typeDefs,
+    cors
+}).listen({ port }, () => console.log(`Server ready at: http://localhost:${port}`),)
